@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-declare var Typesense: any;
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,15 +7,10 @@ declare var Typesense: any;
 })
 export class AppComponent {
 
-  client = new Typesense.Client({
-    'nodes': [{
-      'host': 'localhost',
-      'port': '8108',
-      'protocol': 'http'
-    }],
-    'apiKey': 'Rhsdhas2asasdasj2',
-    'connectionTimeoutSeconds': 2
-  });
-
   title = 'mrkz04';
+
+  ngOnInit() {
+  
+  }
+  
 }
