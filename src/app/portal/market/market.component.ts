@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-
-declare const Typesense: any;
+import { environment } from '../../../environments/environment';
+import instantsearch from 'instantsearch.js';
+import {
+  searchBox,
+  hits,
+  pagination,
+  configure,
+} from 'instantsearch.js/es/widgets';
+import TypesenseInstantSearchAdapter from 'typesense-instantsearch-adapter';
 
 @Component({
   selector: 'app-market',
@@ -10,59 +17,38 @@ declare const Typesense: any;
 export class MarketComponent implements OnInit {
   constructor() {}
 
-  client = new Typesense.Client({
-    nodes: [
-      {
-        host: 'localhost',
-        port: '8108',
-        protocol: 'http',
-      },
-    ],
-    apiKey: 'Rhsdhas2asasdasj2',
-    connectionTimeoutSeconds: 2,
+  typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
+    server: {
+      apiKey: environment.typesenseServer.apiKey, // Be sure to use the search-only-api-key
+      nodes: [
+        {
+          host: environment.typesenseServer.node1.host,
+          port: environment.typesenseServer.node1.port,
+          protocol: environment.typesenseServer.node1.protocol,
+        },
+      ],
+    },
+    // The following parameters are directly passed to Typesense's search API endpoint.
+    //  So you can pass any parameters supported by the search endpoint below.
+    //  queryBy is required.
+    additionalSearchParameters: {
+      queryBy: 'title,authors',
+    },
   });
 
   ngOnInit(): void {
-    // let booksSchema = {
-    //   'name': 'books',
-    //   'fields': [
-    //     {'name': 'title', 'type': 'string' },
-    //     {'name': 'authors', 'type': 'string[]' },
-    //     {'name': 'image_url', 'type': 'string' },
-    //     {'name': 'publication_year', 'type': 'int32' },
-    //     {'name': 'ratings_count', 'type': 'int32' },
-    //     {'name': 'average_rating', 'type': 'float' },
-    //     {'name': 'authors_facet', 'type': 'string[]', 'facet': true },
-    //     {'name': 'publication_year_facet', 'type': 'string', 'facet': true },
-    //   ],
-    //   'default_sorting_field': 'ratings_count'
-    // };
-    // this.client.collections().create(booksSchema)
-    //   .then(function (data) {
-    //     console.log(data)
-    // })
-  }
+    let searchClient = this.typesenseInstantsearchAdapter.searchClient;
+    const search = instantsearch({
+      searchClient,
+      indexName: 'books',
+    });
 
-  loadSearchData() {
-    let bookDocument = JSON.parse(
-      '{"publication_year_facet": "1997", "title": "Harry Potter and the Philosophers Stone", "authors": ["J.K. Rowling", " Mary GrandPr\u00e9"], "publication_year": 1997, "id": "2", "average_rating": 4.44, "image_url": "https://images.gr-assets.com/books/1474154022m/3.jpg", "ratings_count": 4602479, "authors_facet": ["J.K. Rowling", " Mary GrandPr\u00e9"]}'
-    );
-    this.client.collections('books').documents().create(bookDocument);
-  }
+    search.addWidgets([
+      searchBox({
+        container: '#searchbox',
+      }),
+    ]);
 
-  displaySearchData() {
-    let searchParameters = {
-      q: 'harry',
-      query_by: 'title',
-      sort_by: 'ratings_count:desc',
-    };
-
-    this.client
-      .collections('books')
-      .documents()
-      .search(searchParameters)
-      .then(function (searchResults) {
-        console.log(searchResults);
-      });
+    search.start();
   }
 }

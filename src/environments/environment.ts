@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  typesenseServer: {
+    apiKey: 'Rhsdhas2asasdasj2', // Be sure to use the search-only-api-key
+    node1: {
+      host: 'localhost',
+      port: '8108',
+      protocol: 'http',
+    },
+  },
 };
 
 /*
