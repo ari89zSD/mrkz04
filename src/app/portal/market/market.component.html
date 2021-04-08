@@ -1,11 +1,15 @@
 <p>market works!</p>
+<button (click)="loadSearchData()">Load Search Data</button>
+<button (click)="displaySearchData()">Display Search Data</button>
 <div class="market-container">
   <!-- Faceted Search -->
   <div class="faceted-search">
-    <div id="categories" class="categories-filter"></div>
-    <div id="brands" class="brand-filter"></div>
-    <div id="price-range" class="price-filter"></div>
-    <div id="ratings" class="rating-filter"></div>
+    <!--Brand Filter-->
+    <div class="brand-filter">BRAND FILTER</div>
+    <!--Price Filter-->
+    <div class="price-filter">PRICE FILTER</div>
+    <!--Rating Filter-->
+    <div class="rating-filter">RATING FILTER</div>
   </div>
   <!-- Products Loader -->
   <div class="products-loader">PRODUCTS

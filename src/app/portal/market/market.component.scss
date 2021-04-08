@@ -1,44 +1,40 @@
 .market-container {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.faceted-search {
-  background-color: white;
-  width: 15%;
-}
-
-.categories-filter {
-  border-style: solid;
-  border-color: gray;
-}
-
-.brand-filter {
-  border-style: solid;
-  border-color: gray;
-}
-
-.price-filter {
-  border-style: solid;
-  border-color: gray;
-}
-
-.rating-filter {
-  border-style: solid;
-  border-color: gray;
-}
-
-.products-loader {
-  background-color: rgba(236, 241, 236, 0.89);
-  width: 85%;
-  display: flex;
-}
-
-.product {
-  border-style: solid;
-  border-color: black;
-  width: 17%;
-  height: 100px;
-}
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .faceted-search {
+    background-color: white;
+    width: 15%;
+  }
+  
+  .brand-filter {
+    border-style: solid;
+    border-color: gray;
+  }
+  
+  .price-filter {
+    border-style: solid;
+    border-color: gray;
+  }
+  
+  .rating-filter {
+    border-style: solid;
+    border-color: gray;
+  }
+  
+  .products-loader {
+    background-color: rgba(236, 241, 236, 0.89);
+    width: 85%;
+    display: flex;
+  }
+  
+  .product {
+    border-style: solid;
+    border-color: black;
+    width: 17%;
+    height: 100px;
+  }
+  
