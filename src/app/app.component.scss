@@ -33,11 +33,31 @@
   flex: 1;
 }
 
+.ais-SearchBox {
+  display: flex;
+  width: 100%;
+  margin: 5px;
+  /* This tells container to take as much space needed even
+    if window is resized */
+  flex: 1;
+}
+
+.ais-SearchBox-form {
+}
+
 .search-input {
   width: 100%;
 }
 
+.ais-SearchBox-input {
+  width: 100%;
+}
+
 .searchIcon-box {
+  background-color: orange;
+}
+
+.ais-SearchBox-submit {
   background-color: orange;
 }
 
