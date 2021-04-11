@@ -1,6 +1,3 @@
-<p>market works!</p>
-<button (click)="loadSearchData()">Load Search Data</button>
-<button (click)="displaySearchData()">Display Search Data</button>
 <div class="market-container">
   <!-- Faceted Search -->
   <div class="faceted-search">
@@ -11,8 +8,7 @@
     <!--Rating Filter-->
     <div class="rating-filter">RATING FILTER</div>
   </div>
-  <!-- Products Loader -->
-  <div class="products-loader">PRODUCTS
-
+  <!-- Products Loader - this will render the 'hits' from search -->
+  <div id="products-loader" class="products-loader">
   </div>
 </div>

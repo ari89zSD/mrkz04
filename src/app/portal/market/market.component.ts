@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import instantsearch from 'instantsearch.js';
+import { searchBox, hits } from 'instantsearch.js/es/widgets';
 import { TypesenseInstantsearchAdapterService } from 'src/app/services/typesense-instantsearch-adapter.service';
 declare const Typesense: any;
 
@@ -15,20 +17,29 @@ export class MarketComponent implements OnInit {
     this.searchClient = this.typesenseInstantsearchAdapterService.getSearchClient();
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    let searchClient = this.typesenseInstantsearchAdapterService.getSearchClient();
+    const search = instantsearch({
+      searchClient,
+      indexName: 'books',
+    });
 
-  loadSearchData() {
-    let bookDocument = JSON.parse(
-      '{"publication_year_facet": "1997", "title": "Harry Potter and the Philosophers Stone", "authors": ["J.K. Rowling", " Mary GrandPr\u00e9"], "publication_year": 1997, "id": "2", "average_rating": 4.44, "image_url": "https://images.gr-assets.com/books/1474154022m/3.jpg", "ratings_count": 4602479, "authors_facet": ["J.K. Rowling", " Mary GrandPr\u00e9"]}'
-    );
-    this.searchClient.collections('books').documents().create(bookDocument);
-  }
+    search.addWidgets([
+      searchBox({
+        container: '#search-container',
+      }),
+      hits({
+        container: '#products-loader',
+        templates: {
+          item: `
+            <div class="hit-name">
+              {{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}
+            </div>
+          `,
+        },
+      }),
+    ]);
 
-  displaySearchData() {
-    let searchParameters = {
-      q: 'harry',
-      query_by: 'title',
-      sort_by: 'ratings_count:desc',
-    };
+    search.start();
   }
 }

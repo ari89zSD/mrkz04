@@ -10,5 +10,51 @@ body {
   min-height: 100%;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.search-container {
+  display: flex;
+  width: 100%;
+  margin: 5px;
+  /* This tells container to take as much space needed even
+    if window is resized */
+  flex: 1;
+}
+
+.searchbox {
+  width: 100%;
+  border: 2px solid;
+}
+
+.ais-SearchBox {
+  display: flex;
+  width: 100%;
+  margin: 5px;
+  /* This tells container to take as much space needed even
+    if window is resized */
+  flex: 1;
+}
+
+.ais-SearchBox-form {
+  width: 100%;
+  display: flex;
+}
+
+.ais-SearchBox-input {
+  width: 100%;
+}
+
+.ais-SearchBox-submit {
+  width: 30px;
+  background-color: orange;
+}
+
+.ais-SearchBox-submitIcon {
+}

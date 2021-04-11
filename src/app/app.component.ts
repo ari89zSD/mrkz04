@@ -22,10 +22,7 @@ export class AppComponent {
 
     search.addWidgets([
       searchBox({
-        container: '#searchbox',
-      }),
-      hits({
-        container: '#hits',
+        container: '#search-container',
       }),
     ]);
 
