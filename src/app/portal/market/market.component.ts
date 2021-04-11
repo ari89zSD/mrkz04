@@ -32,10 +32,18 @@ export class MarketComponent implements OnInit {
         container: '#products-loader',
         templates: {
           item: `
+          <div>
+            <img src="" align="left" alt="" />
             <div class="hit-name">
-              {{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}
+              {{#helpers.highlight}}{ "attribute": "title" }{{/helpers.highlight}}
             </div>
-          `,
+            <div class="hit-description">
+              {{#helpers.highlight}}{ "attribute": "authors" }{{/helpers.highlight}}
+            </div>
+            <div class="hit-price">\$</div>
+            <div class="hit-rating">Rating: </div>
+          </div>
+        `,
         },
       }),
     ]);
