@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import instantsearch from 'instantsearch.js';
-import { searchBox, hits } from 'instantsearch.js/es/widgets';
+import {
+  searchBox,
+  hits,
+  refinementList,
+  clearRefinements,
+} from 'instantsearch.js/es/widgets';
 import { TypesenseInstantsearchAdapterService } from 'src/app/services/typesense-instantsearch-adapter.service';
 declare const Typesense: any;
 
@@ -45,6 +50,17 @@ export class MarketComponent implements OnInit {
           </div>
         `,
         },
+      }),
+      clearRefinements({
+        container: '#clear-refinements',
+      }),
+      refinementList({
+        container: '#faceted-search',
+        attribute: 'publication_year_facet',
+      }),
+      refinementList({
+        container: '#faceted-search',
+        attribute: 'authors_facet',
       }),
     ]);
 
