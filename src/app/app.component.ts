@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import instantsearch from 'instantsearch.js';
-import { searchBox, hits } from 'instantsearch.js/es/widgets';
-import { TypesenseInstantsearchAdapterService } from './services/typesense-instantsearch-adapter.service';
+
+declare var Typesense: any;
 
 @Component({
   selector: 'app-root',
@@ -9,23 +8,35 @@ import { TypesenseInstantsearchAdapterService } from './services/typesense-insta
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(
-    private typesenseInstantsearchAdapterService: TypesenseInstantsearchAdapterService
-  ) {}
+  private client;
+
+  constructor() {
+    this.client = new Typesense.Client({
+      nodes: [
+        {
+          host: 'localhost', // For Typesense Cloud use xxx.a1.typesense.net
+          port: '8108', // For Typesense Cloud use 443
+          protocol: 'http', // For Typesense Cloud use https
+        },
+      ],
+      apiKey: 'Rhsdhas2asasdasj2',
+      connectionTimeoutSeconds: 2,
+    });
+  }
 
   ngOnInit() {
-    let searchClient = this.typesenseInstantsearchAdapterService.getSearchClient();
-    const search = instantsearch({
-      searchClient,
-      indexName: 'books',
-    });
+    let searchParameters = {
+      q: 'Vizio',
+      query_by: 'brand',
+      sort_by: 'product_id:desc',
+    };
 
-    search.addWidgets([
-      searchBox({
-        container: '#search-container',
-      }),
-    ]);
-
-    search.start();
+    this.client
+      .collections('products')
+      .documents()
+      .search(searchParameters)
+      .then(function (searchResults) {
+        console.log(searchResults);
+      });
   }
 }
