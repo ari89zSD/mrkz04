@@ -24,6 +24,9 @@ export class AppComponent {
     });
   }
 
+  //https://medium.com/@nacimidjakirene/angular-search-autosuggest-with-observables-6f42987f80e6
+  //Search as you type using rxjs in link above
+
   ngOnInit() {
     let searchParameters = {
       q: 'Vizio',
