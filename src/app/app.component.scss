@@ -26,6 +26,7 @@
 
 .search-container {
   display: flex;
+  justify-content: center;
   width: 100%;
   margin: 5px;
 }
@@ -36,9 +37,6 @@
 
 .searchIcon-box {
   background-color: orange;
-}
-
-.search-list-box {
 }
 
 .search-list {

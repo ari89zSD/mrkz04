@@ -8,13 +8,12 @@
       <!--Adin logo-->
       <div class="logo">ADIN LOGO</div>
       <div id="search-container" class="search-container">
-        <input type="search" class="search-input" />
+        <input type="search" id="keyword" class="search-input" [formControl]="queryField" />
         <!--search list box-->
-        <div class="search-list-box">
-          <ul class="search-list">
-            <li class="search-item"></li>
-          </ul>
-        </div>
+        <ul class="search-list">
+          <li class="search-item"></li>
+        </ul>
+
         <!--search icon-->
         <img src="/assets/images/searchIcon.png" alt="" class="searchIcon-box" />
       </div>
