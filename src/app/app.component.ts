@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +6,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  
-  queryField: FormControl = new FormControl();
+  constructor() {}
 
-  constructor() {
-    
-  }
-
-  ngOnInit() {
-    this.queryField.valueChanges.subscribe( result => console.log(result));
-  }  
+  ngOnInit() {}
 }

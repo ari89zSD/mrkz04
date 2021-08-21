@@ -5,19 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MarketComponent } from './portal/market/market.component';
 import { WelcomeComponent } from './portal/welcome/welcome.component';
+import { TypesenseSearchService } from './services/typesense-search.service';
+import { SearchComponent } from './arch/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MarketComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    SearchComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  providers: [TypesenseSearchService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

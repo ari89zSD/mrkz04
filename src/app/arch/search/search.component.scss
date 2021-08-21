@@ -1,0 +1,40 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 5px;
+}
+
+.search-input {
+  width: 100%;
+}
+
+.searchIcon-box {
+  background-color: orange;
+}
+
+.search-list {
+  width: 100%;
+  list-style: none;
+  font-size: 1.1em;
+  color: rgb(105, 105, 105);
+  border: 1px solid #ccc;
+  border-top: none;
+  /*so things don't jump around*/
+  position: absolute;
+  left: 25%;
+  top: calc(50% + 25px);
+  max-height: calc(50% - 15px);
+  overflow-y: auto;
+  background: #fff;
+}
+
+.search-item {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.search-list:hover {
+  background: #c0c0c0;
+  color: #fff;
+}

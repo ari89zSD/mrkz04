@@ -1,0 +1,12 @@
+<div id="search-container" class="search-container">
+    <input type="search" id="keyword" class="search-input" [formControl]="queryField" />
+    <!--search list box-->
+    <ul class="search-list">
+        <li *ngFor="let result of results" class="search-item">
+            <p>{{result.hits.document.product_name}}</p>
+        </li>
+    </ul>
+
+    <!--search icon-->
+    <img src="/assets/images/searchIcon.png" alt="" class="searchIcon-box" />
+</div>

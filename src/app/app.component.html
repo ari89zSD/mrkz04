@@ -7,16 +7,7 @@
     <div class="nav-middle-container">
       <!--Adin logo-->
       <div class="logo">ADIN LOGO</div>
-      <div id="search-container" class="search-container">
-        <input type="search" id="keyword" class="search-input" [formControl]="queryField" />
-        <!--search list box-->
-        <ul class="search-list">
-          <li class="search-item"></li>
-        </ul>
-
-        <!--search icon-->
-        <img src="/assets/images/searchIcon.png" alt="" class="searchIcon-box" />
-      </div>
+      <app-search class="app-search"></app-search>
       <!--account profile icon-->
       <div class="account_profile">
         <img src="/assets/images/outline_account_box_white_18dp.png" alt="" />
