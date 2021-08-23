@@ -22,23 +22,24 @@ export class TypesenseSearchService {
     });
   }
 
-  search(keyword: string): any[] {
+  search(keyword: string): Promise<any[]> {
     let searchParameters = {
       q: keyword,
       query_by: 'product_name',
       sort_by: 'product_id:desc',
     };
+    console.log('Searching for: ' + keyword);
 
-    let results: any[];
+    let results: any[] = [];
 
     this.client
       .collections('products')
       .documents()
       .search(searchParameters)
       .then(function (searchResults) {
-        //console.log(searchResults);
-        results = searchResults.hits;
+        console.log('Found search results within service: ' + searchResults);
+        results.push(searchResults.hits);
       });
-    return results;
+    return Promises.push(results);
   }
 }
