@@ -1,0 +1,2 @@
+## docker command to set up typesense server ##
+docker run -d -p 8108:8108 -v C:/Users/arifz/DEV/docker/servers/typesense_0.19.0:/tmp typesense/typesense:0.19.0 \ ./typesense-server --config=/tmp/typesense-server.ini

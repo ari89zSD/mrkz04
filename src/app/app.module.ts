@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MarketComponent } from './portal/market/market.component';
 import { WelcomeComponent } from './portal/welcome/welcome.component';
 import { TypesenseSearchService } from './services/typesense-search.service';
-import { SearchComponent } from './arch/search/search.component';
+import { SearchComponent } from './base/search/search.component';
 
 @NgModule({
   declarations: [
