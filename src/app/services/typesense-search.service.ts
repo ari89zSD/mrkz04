@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { from, Observable } from 'rxjs';
 
 declare var Typesense: any;
 
@@ -22,13 +23,12 @@ export class TypesenseSearchService {
     });
   }
 
-  search(keyword: string): Promise<any[]> {
+  search(keyword: string): Observable<any[]> {
     let searchParameters = {
       q: keyword,
       query_by: 'product_name',
       sort_by: 'product_id:desc',
     };
-    console.log('Searching for: ' + keyword);
 
     let results: any[] = [];
 
@@ -37,9 +37,12 @@ export class TypesenseSearchService {
       .documents()
       .search(searchParameters)
       .then(function (searchResults) {
-        console.log('Found search results within service: ' + searchResults);
-        results.push(searchResults.hits);
+        let documents: SearchDocuments[] = JSON.stringify(searchResults.hits);
+        console.log(result);
+        results.push(result);
       });
-    return Promises.push(results);
+
+    let resultObservable: Observable<any[]> = from(results);
+    return resultObservable;
   }
 }
